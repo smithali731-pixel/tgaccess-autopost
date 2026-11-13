@@ -22,10 +22,9 @@ jobs:
           python-version: "3.12"
       - name: publish due posts
         env:
-          IG_USER_ID: ${{ secrets.IG_USER_ID }}
-          IG_TOKEN: ${{ secrets.IG_TOKEN }}
-          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
-          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          IG_USER_ID: "17841456768761198"
+          FB_PAGE_ID: "1357468380793691"
+          META_TOKEN: ${{ secrets.META_TOKEN }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: "324285499"
         run: python publish.py

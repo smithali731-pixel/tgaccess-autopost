@@ -63,3 +63,15 @@ def test_one_platform_failing_does_not_repeat_the_other(tmp_path, monkeypatch):
     calls2 = []
     monkeypatch.setattr(publish, "PLATFORMS", {p: ((lambda it, p=p: calls2.append(p) or "2"), v[1], v[2]) for p, v in publish.PLATFORMS.items()})
     assert publish.main() == 0 and calls2 == ["fb"]
+
+
+def test_page_token_is_fetched_from_meta_token(monkeypatch):
+    for k in ("IG_TOKEN", "FB_PAGE_TOKEN"):
+        monkeypatch.delenv(k, raising=False)
+    monkeypatch.setenv("META_TOKEN", "user")
+    monkeypatch.setenv("FB_PAGE_ID", "123")
+    seen = []
+    monkeypatch.setattr(publish, "call", lambda url, params=None, method="POST", headers=None: seen.append((url, params)) or {"access_token": "page"})
+    publish.resolve_tokens()
+    assert os.environ["IG_TOKEN"] == os.environ["FB_PAGE_TOKEN"] == "page"
+    assert seen[0][0].endswith("/123") and seen[0][1]["access_token"] == "user"

@@ -4,7 +4,10 @@ The two accounts are NOT linked, so every item is published to each one separate
 tracked separately in state.json: a failure on one platform never repeats the other.
 Meta reads the media straight from this public repository.
 
-Environment: IG_USER_ID, IG_TOKEN, FB_PAGE_ID, FB_PAGE_TOKEN, GITHUB_REPOSITORY.
+Environment: IG_USER_ID, FB_PAGE_ID (public ids, set in the workflow) and META_TOKEN
+(secret: a long-lived user token for the "social bridge" app). The page token used for
+both platforms is fetched from META_TOKEN at the start of every run, so it never goes stale
+and only one secret is needed. IG_TOKEN / FB_PAGE_TOKEN, if set, are used as they are.
 Optional alerts: TG_BOT_TOKEN, TG_CHAT_ID.
 """
 import json, os, sys, time, urllib.error, urllib.parse, urllib.request
@@ -118,8 +121,24 @@ def with_retries(fn, item, label, sleep=time.sleep):
             sleep(RETRY_WAITS[n])
 
 
+def resolve_tokens():
+    """Fill IG_TOKEN and FB_PAGE_TOKEN from META_TOKEN when they are not set directly."""
+    meta, page = os.environ.get("META_TOKEN"), os.environ.get("FB_PAGE_ID")
+    if not meta or not page or (os.environ.get("IG_TOKEN") and os.environ.get("FB_PAGE_TOKEN")):
+        return
+    tok = call(f"{GRAPH}/{page}", {"fields": "access_token", "access_token": meta}, "GET")["access_token"]
+    os.environ.setdefault("IG_TOKEN", tok)
+    os.environ.setdefault("FB_PAGE_TOKEN", tok)
+
+
 def main():
     now = datetime.now(timezone.utc)
+    try:
+        resolve_tokens()
+    except Exception as ex:
+        log("ERROR", f"could not get the page token from META_TOKEN: {ex}")
+        notify(f"❌ TG Access autopost: the Meta token no longer works\n{str(ex)[:300]}")
+        return 1
     schedule = json.loads(SCHEDULE.read_text(encoding="utf-8"))
     state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
     state.setdefault("done", {})

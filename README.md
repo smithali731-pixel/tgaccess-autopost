@@ -10,5 +10,5 @@
 - يفحص البرنامج الجدول كل 5 دقائق. أي عنصر تأخر أكثر من 12 ساعة يتجاوزه ولا ينشره.
 - بدون الأسرار لا ينشر شيئا.
 
-الأسرار المطلوبة في Settings ثم Secrets and variables ثم Actions:
-`IG_USER_ID` و `IG_TOKEN` و `FB_PAGE_ID` و `FB_PAGE_TOKEN`، واختياريا `TG_BOT_TOKEN` للتنبيهات.
+السر المطلوب في Settings ثم Secrets and variables ثم Actions: `META_TOKEN` فقط (رمز تطبيق social bridge الدائم)، واختياريا `TG_BOT_TOKEN` للتنبيهات.
+أرقام الحسابين مكتوبة في ملف التشغيل.
