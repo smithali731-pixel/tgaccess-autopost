@@ -51,7 +51,7 @@ def notify(text):
         log("WARN", f"telegram alert failed: {ex}")
 
 
-def media_url(name):
+def media_url(name):  # noqa: D401
     if not (ROOT / "media" / name).exists():
         raise RuntimeError(f"missing media/{name}")
     repo = os.environ.get("GITHUB_REPOSITORY", "smithali731-pixel/tgaccess-autopost")
@@ -74,7 +74,7 @@ def ig_wait(cid, tok, tries=60, pause=10):
 def publish_ig(item):
     ig, tok = os.environ["IG_USER_ID"], os.environ["IG_TOKEN"]
     url, kind = media_url(item["media"]), item["type"]
-    if kind == "reel":
+    if kind in ("reel", "video"):
         p = {"media_type": "REELS", "video_url": url, "caption": item["caption"], "share_to_feed": "true"}
     elif kind == "story":
         p = {"media_type": "STORIES", "image_url": url}
@@ -92,6 +92,10 @@ def publish_fb(item):
     if kind == "feed":
         r = call(f"{GRAPH}/{page}/photos", {"url": url, "caption": item["caption"], "access_token": tok})
         return r.get("post_id") or r["id"]
+    if kind == "video":  # the landscape original as a normal page video
+        r = call(f"{GRAPH}/{page}/videos", {"file_url": media_url(item["media_fb"]), "title": item.get("title", ""),
+                                            "description": item["caption"], "access_token": tok})
+        return r["id"]
     if kind == "story":
         photo = call(f"{GRAPH}/{page}/photos", {"url": url, "published": "false", "access_token": tok})["id"]
         r = call(f"{GRAPH}/{page}/photo_stories", {"photo_id": photo, "access_token": tok})

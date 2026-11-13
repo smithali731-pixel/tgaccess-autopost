@@ -28,6 +28,15 @@
   "caption": ""
  },
  {
+  "id": "2026-11-14-video",
+  "at": "2026-11-14T12:15:00+01:00",
+  "type": "video",
+  "media": "video-01-autopilot-reel.mp4",
+  "media_fb": "video-01-autopilot-landscape.mp4",
+  "title": "Your paid channel on autopilot",
+  "caption": "Your paid Telegram channel, running on autopilot.\n\nTG Access sells your plans, takes payments by USDT, card, PayPal or Telegram Stars, and manages your members for you, all through your own bot.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
   "id": "2026-11-14-post",
   "at": "2026-11-14T15:40:00+01:00",
   "type": "feed",
@@ -47,6 +56,15 @@
   "type": "story",
   "media": "2026-11-15-vertical.jpg",
   "caption": ""
+ },
+ {
+  "id": "2026-11-15-video",
+  "at": "2026-11-15T12:50:00+01:00",
+  "type": "video",
+  "media": "video-02-how-it-works-reel.mp4",
+  "media_fb": "video-02-how-it-works-landscape.mp4",
+  "title": "How TG Access works",
+  "caption": "How does TG Access work?\n\nConnect your bot, add your plans, take payments, and let it manage access to your channel. Here's the whole flow in under a minute.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
   "id": "2026-11-15-post",
@@ -77,6 +95,15 @@
   "caption": "Four steps and your channel sells on its own:\n\n1. Connect your bot\n2. Add your plans\n3. Take payments\n4. Grow your channel\n\nNo server, nothing to install.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
+  "id": "2026-11-16-video",
+  "at": "2026-11-16T18:20:00+01:00",
+  "type": "video",
+  "media": "video-03-setup-guide-reel.mp4",
+  "media_fb": "video-03-setup-guide-landscape.mp4",
+  "title": "Setup guide: your own bot",
+  "caption": "The full setup guide.\n\nFrom creating your bot to your first paying subscriber, step by step. No code and no server needed.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
   "id": "2026-11-16-reel",
   "at": "2026-11-16T21:50:00+01:00",
   "type": "reel",
@@ -96,6 +123,15 @@
   "type": "feed",
   "media": "2026-11-17-post.jpg",
   "caption": "A subscriber who pays at 3 am should not wait until you wake up.\n\nWith TG Access the invite is sent the moment the payment is confirmed.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
+  "id": "2026-11-17-video",
+  "at": "2026-11-17T18:45:00+01:00",
+  "type": "video",
+  "media": "video-04-auto-add-remove-reel.mp4",
+  "media_fb": "video-04-auto-add-remove-landscape.mp4",
+  "title": "Auto-add & auto-remove members",
+  "caption": "Members get in the moment they pay, and they're removed when the subscription ends.\n\nNo more checking lists or sending invite links by hand.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
   "id": "2026-11-17-reel",
@@ -119,6 +155,15 @@
   "caption": "Nobody stays in your paid channel for free.\n\nWhen a subscription ends, TG Access removes the member automatically. If they want back in, they renew from the bot.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
+  "id": "2026-11-18-video",
+  "at": "2026-11-18T18:55:00+01:00",
+  "type": "video",
+  "media": "video-05-payments-reel.mp4",
+  "media_fb": "video-05-payments-landscape.mp4",
+  "title": "Cards, PayPal, Stars & USDT",
+  "caption": "Let your subscribers pay the way they prefer: cards, PayPal, Telegram Stars or USDT.\n\nThe money goes straight to your own accounts.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
   "id": "2026-11-18-reel",
   "at": "2026-11-18T19:45:00+01:00",
   "type": "reel",
@@ -131,6 +176,15 @@
   "type": "story",
   "media": "2026-11-19-vertical.jpg",
   "caption": ""
+ },
+ {
+  "id": "2026-11-19-video",
+  "at": "2026-11-19T12:35:00+01:00",
+  "type": "video",
+  "media": "video-06-monetize-reel.mp4",
+  "media_fb": "video-06-monetize-landscape.mp4",
+  "title": "Monetize your channel, no coding",
+  "caption": "Want to turn your Telegram channel into income?\n\nHere's how to get paid in USDT, PayPal and cards without writing a single line of code.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
   "id": "2026-11-19-post",
@@ -161,6 +215,15 @@
   "caption": "Let your subscribers pay the way that suits them:\n\nCards through Stripe\nPayPal\nUSDT\nTelegram Stars\n\nSwitch on the ones you want.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
+  "id": "2026-11-20-video",
+  "at": "2026-11-20T18:25:00+01:00",
+  "type": "video",
+  "media": "video-07-phone-or-web-reel.mp4",
+  "media_fb": "video-07-phone-or-web-landscape.mp4",
+  "title": "Manage from your phone or the web",
+  "caption": "Manage your paid channel from wherever you are.\n\nUse the admin panel inside your bot on your phone, or open the web dashboard for the bigger picture.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
   "id": "2026-11-20-reel",
   "at": "2026-11-20T21:40:00+01:00",
   "type": "reel",
@@ -180,6 +243,15 @@
   "type": "feed",
   "media": "2026-11-21-post.jpg",
   "caption": "You do not need a developer for this.\n\nNo server to rent and nothing to install. If you already have a bot and a channel, you can be live in minutes.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
+  "id": "2026-11-21-video",
+  "at": "2026-11-21T18:05:00+01:00",
+  "type": "video",
+  "media": "video-08-sync-reel.mp4",
+  "media_fb": "video-08-sync-landscape.mp4",
+  "title": "Change it once, live everywhere",
+  "caption": "Change something on the website and it's live in your bot instantly, and the other way round.\n\nOne setup, always in sync.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
   "id": "2026-11-21-reel",
@@ -203,6 +275,15 @@
   "caption": "Monthly, yearly, or anything in between.\n\nYou name the plans and set the prices. Change them whenever you like, and existing subscribers keep the price they paid.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
+  "id": "2026-11-22-video",
+  "at": "2026-11-22T18:15:00+01:00",
+  "type": "video",
+  "media": "video-09-broadcast-reel.mp4",
+  "media_fb": "video-09-broadcast-landscape.mp4",
+  "title": "Message everyone who pressed Start",
+  "caption": "Everyone who pressed Start on your bot is a potential subscriber.\n\nSend them your offers and announcements in one message.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
   "id": "2026-11-22-reel",
   "at": "2026-11-22T21:15:00+01:00",
   "type": "reel",
@@ -222,6 +303,15 @@
   "type": "feed",
   "media": "2026-11-23-post.jpg",
   "caption": "Launch offer? Weekend sale?\n\nCreate a discount code in seconds, set how much it takes off and how long it lasts.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
+  "id": "2026-11-23-video",
+  "at": "2026-11-23T18:00:00+01:00",
+  "type": "video",
+  "media": "video-10-win-back-reel.mp4",
+  "media_fb": "video-10-win-back-landscape.mp4",
+  "title": "Discount codes & win-back offers",
+  "caption": "Some members leave. Some can be won back.\n\nCreate discount codes and send win-back offers to the members who didn't renew.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
   "id": "2026-11-23-reel",
@@ -245,6 +335,15 @@
   "caption": "Sometimes you want to let someone in without a payment.\n\nGenerate an access code, set how long it lasts and how many people can use it, and share it.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
+  "id": "2026-11-24-video",
+  "at": "2026-11-24T18:10:00+01:00",
+  "type": "video",
+  "media": "video-11-extension-reel.mp4",
+  "media_fb": "video-11-extension-landscape.mp4",
+  "title": "Keep subscribers longer",
+  "caption": "Keeping a subscriber is easier than finding a new one.\n\nSee how subscription extension helps your members stay with you longer.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
   "id": "2026-11-24-reel",
   "at": "2026-11-24T21:20:00+01:00",
   "type": "reel",
@@ -257,6 +356,15 @@
   "type": "story",
   "media": "2026-11-25-vertical.jpg",
   "caption": ""
+ },
+ {
+  "id": "2026-11-25-video",
+  "at": "2026-11-25T12:45:00+01:00",
+  "type": "video",
+  "media": "video-12-affiliate-reel.mp4",
+  "media_fb": "video-12-affiliate-landscape.mp4",
+  "title": "Your own affiliate program",
+  "caption": "Let anyone promote your channel for a commission.\n\nYour affiliates bring new subscribers, and you only pay when they actually sell.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
   "id": "2026-11-25-post",
@@ -287,6 +395,15 @@
   "caption": "Your best marketers are already inside your channel.\n\nWith referrals, every member gets a personal invite link and earns a reward when their friends subscribe.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
+  "id": "2026-11-26-video",
+  "at": "2026-11-26T18:30:00+01:00",
+  "type": "video",
+  "media": "video-13-ad-space-reel.mp4",
+  "media_fb": "video-13-ad-space-landscape.mp4",
+  "title": "Turn your bot into an ad space",
+  "caption": "Your bot can earn beyond subscriptions.\n\nAdd your affiliate and partner links and show them to everyone who uses your bot.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
   "id": "2026-11-26-reel",
   "at": "2026-11-26T20:10:00+01:00",
   "type": "reel",
@@ -306,6 +423,15 @@
   "type": "feed",
   "media": "2026-11-27-post.jpg",
   "caption": "One member, two subscriptions.\n\nYour subscribers can buy access for a friend and hand over a code. A new sale, and a new member, without any extra work from you.\n\ntgaccess.net\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
+ },
+ {
+  "id": "2026-11-27-video",
+  "at": "2026-11-27T18:35:00+01:00",
+  "type": "video",
+  "media": "video-14-safety-pricing-reel.mp4",
+  "media_fb": "video-14-safety-pricing-landscape.mp4",
+  "title": "Is it safe? And what it costs",
+  "caption": "Is it safe to connect your bot?\n\nHow TG Access protects your bot, your data and your money, plus a clear look at the pricing.\n\nStart free at tgaccess.net\nMore tutorials: youtube.com/@TGaccess\n\n#TGAccess #Telegram #TelegramBot #PaidChannel #Subscriptions #CreatorEconomy"
  },
  {
   "id": "2026-11-27-reel",
