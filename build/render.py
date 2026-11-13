@@ -31,7 +31,7 @@ body{width:W_px;height:H_px;font-family:Poppins,sans-serif;overflow:hidden;posit
 .ring{position:absolute;border-radius:50%;border:2px solid;opacity:.14}
 .light .ring{border-color:#5B5CF6}.bold .ring,.dark .ring{border-color:#fff}
 .r1{width:520px;height:520px;right:-170px;bottom:PAD_Bpx}.r2{width:300px;height:300px;right:-60px;bottom:calc(PAD_Bpx + 110px)}
-.wrap{position:absolute;inset:PAD_Tpx 84px PAD_Bpx 84px;display:flex;flex-direction:column}
+.wrap{position:absolute;gap:0;inset:PAD_Tpx 84px PAD_Bpx 84px;display:flex;flex-direction:column}
 .top{display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:20px;font-size:46px;font-weight:700;letter-spacing:-.5px}
 .logo svg{height:92px;width:92px;display:block;border-radius:22px}
@@ -70,6 +70,14 @@ li i svg{width:30px;height:30px;stroke-width:3}
 .tier p{font-size:28px;font-weight:600;color:#46508A}
 .tier.max{background:linear-gradient(140deg,#3D8BFF,#8B3DF0)}
 .tier.max small{color:#FFD34D}.tier.max strong,.tier.max p{color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.cell{background:#fff;border-radius:28px;padding:26px 26px 28px;box-shadow:0 10px 30px rgba(60,60,160,.1)}
+.cell i{width:62px;height:62px;border-radius:18px;background:linear-gradient(140deg,#3D8BFF,#8B3DF0);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.cell i svg{width:34px;height:34px;stroke-width:2.2}
+.cell b{display:block;font-size:29px;line-height:1.2;font-weight:700;color:#0F1B4D}
+.cell span{display:block;font-size:22px;line-height:1.35;font-weight:500;color:#5A649B;margin-top:6px}
+.compact h1{font-size:76px}.compact .grid{margin-top:34px;gap:16px}.compact .cell{padding:22px 24px}
+.compact .cell i{width:54px;height:54px;margin-bottom:12px}.compact .cell b{font-size:27px}.compact .cell span{font-size:21px}
 .foot{display:flex;align-items:center;justify-content:space-between}
 .cta{font-size:34px;font-weight:700;padding:22px 44px;border-radius:99px;background:linear-gradient(180deg,#FFE27A,#F5A300);color:#17104F;
      box-shadow:0 14px 30px rgba(245,163,0,.32);display:flex;align-items:center;gap:14px}
@@ -100,7 +108,7 @@ def page(day, fmt):
     css = CSS
     for k, v in (("W_", w), ("H_", h), ("PAD_T", pt), ("PAD_B", pb), ("HS_", hs), ("SS_", ss), ("LS_", ls), ("GAP_", gap)):
         css = css.replace(k, str(v))
-    body = f'<div class="tile">{icon(day["icon"])}</div><h1>{headline(day["h"])}</h1>'
+    body = ("" if day.get("compact") else f'<div class="tile">{icon(day["icon"])}</div>') + f'<h1>{headline(day["h"])}</h1>'
     if "sub" in day:
         body += f'<p class="sub">{html.escape(day["sub"])}</p>'
     if "pts" in day:
@@ -109,13 +117,17 @@ def page(day, fmt):
         body += '<ul class="steps">' + "".join(
             f'<li><i>{n}</i><div><b>{html.escape(t)}</b><span>{html.escape(s)}</span></div></li>'
             for n, (t, s) in enumerate(day["steps"], 1)) + "</ul>"
+    if "grid" in day:
+        body += '<div class="grid">' + "".join(
+            f'<div class="cell"><i>{icon(ic)}</i><b>{html.escape(t)}</b><span>{html.escape(d)}</span></div>'
+            for ic, t, d in day["grid"]) + "</div>"
     if "tiers" in day:
         body += '<div class="tiers">' + "".join(
             f'<div class="tier{" max" if n == "MAX" else ""}"><small>{n}</small><strong>{p}</strong><p>{c}</p></div>'
             for n, p, c in day["tiers"]) + "</div>"
     logo = MARK + "<span><b>TG</b> Access</span>"
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head>
-<body class="{theme}"><div class="bg"></div><div class="blob b1"></div><div class="blob b2"></div>
+<body class="{theme}{' compact' if day.get('compact') else ''}"><div class="bg"></div><div class="blob b1"></div><div class="blob b2"></div>
 <div class="ring r1"></div><div class="ring r2"></div>
 <div class="wrap"><div class="top"><div class="logo">{logo}</div><div class="tag">{html.escape(day["tag"])}</div></div>
 <div class="mid">{body}</div>

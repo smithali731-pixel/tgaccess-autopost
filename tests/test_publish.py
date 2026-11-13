@@ -7,8 +7,8 @@ import publish
 
 def test_schedule_is_complete_and_times_never_repeat():
     s = json.loads(publish.SCHEDULE.read_text())
-    assert len(s) == 92 and len({x["id"] for x in s}) == 92
-    assert len({x["at"][11:16] for x in s}) == 92
+    assert len(s) == 93 and len({x["id"] for x in s}) == 93
+    assert len({x["at"][11:16] for x in s}) == 93
     for x in s:
         assert (publish.ROOT / "media" / x["media"]).exists()
         assert x["type"] == "story" or len(x["caption"]) <= 2200
