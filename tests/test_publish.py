@@ -32,6 +32,7 @@ def run(tmp_path, monkeypatch, items, env, fail=()):
         return f
     monkeypatch.setattr(publish, "PLATFORMS", {p: (fake(p), v[1], v[2]) for p, v in publish.PLATFORMS.items()})
     monkeypatch.setattr(publish, "with_retries", lambda fn, item, label: fn(item))
+    monkeypatch.setattr(publish, "call", lambda *a, **k: {"username": "test"})
     code = publish.main()
     return code, calls, json.loads((tmp_path / "st.json").read_text()) if (tmp_path / "st.json").exists() else None
 
