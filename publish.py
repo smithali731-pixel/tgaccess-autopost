@@ -148,6 +148,9 @@ def main():
         log("INFO", "no account secrets set yet; nothing is published")
         return 0
 
+    acct = call(f"{GRAPH}/{os.environ['IG_USER_ID']}", {"fields": "username", "access_token": os.environ["IG_TOKEN"]}, "GET") if "ig" in ready else {}
+    nxt = min((x["at"] for x in schedule if datetime.fromisoformat(x["at"]) > now), default="none")
+    log("INFO", f"ready for {', '.join(sorted(ready))}; instagram @{acct.get('username', '-')}; next item at {nxt}")
     failed = False
     for it in sorted(schedule, key=lambda x: x["at"]):
         at = datetime.fromisoformat(it["at"])
