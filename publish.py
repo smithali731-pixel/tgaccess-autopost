@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SCHEDULE = ROOT / "schedule.json"
-STATE = ROOT / "state.json"
+STATE = Path(os.environ.get("STATE_FILE") or ROOT / "state.json")  # the server keeps its own copy
 GRAPH = "https://graph.facebook.com/v21.0"
 MAX_LATE = timedelta(hours=12)   # an item later than this is skipped, so a long outage never dumps a backlog
 RETRY_WAITS = (60, 180)
