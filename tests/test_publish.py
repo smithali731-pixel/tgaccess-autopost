@@ -35,6 +35,7 @@ def run(tmp_path, monkeypatch, items, env, fail=()):
     monkeypatch.setattr(publish, "PLATFORMS", {p: (fake(p), v[1], v[2]) for p, v in publish.PLATFORMS.items()})
     monkeypatch.setattr(publish, "with_retries", lambda fn, item, label: fn(item))
     monkeypatch.setattr(publish, "call", lambda *a, **k: {"username": "test"})
+    monkeypatch.setattr(publish, "already_live", lambda item, plat: False)
     code = publish.main()
     return code, calls, json.loads((tmp_path / "st.json").read_text()) if (tmp_path / "st.json").exists() else None
 
@@ -78,3 +79,24 @@ def test_page_token_is_fetched_from_meta_token(monkeypatch):
     publish.resolve_tokens()
     assert os.environ["IG_TOKEN"] == os.environ["FB_PAGE_TOKEN"] == "page"
     assert seen[0][0].endswith("/123") and seen[0][1]["access_token"] == "user"
+
+
+def test_an_item_already_on_the_platform_is_not_published_again(tmp_path, monkeypatch):
+    items = [item("dup", -timedelta(minutes=5))]
+    code, calls, st = run(tmp_path, monkeypatch, items, ALL)
+    monkeypatch.setattr(publish, "already_live", lambda it, plat: True)
+    (tmp_path / "st.json").unlink()
+    calls2 = []
+    monkeypatch.setattr(publish, "PLATFORMS", {p: ((lambda it, p=p: calls2.append(p) or "2"), v[1], v[2]) for p, v in publish.PLATFORMS.items()})
+    assert publish.main() == 0 and calls2 == []
+    assert set(json.loads((tmp_path / "st.json").read_text())["done"]) == {"dup:ig", "dup:fb"}
+
+
+def test_caption_match_detects_a_live_instagram_post(monkeypatch):
+    monkeypatch.setenv("IG_USER_ID", "1"); monkeypatch.setenv("IG_TOKEN", "t")
+    cap = "Hello world, this is the caption of the post\n\nmore"
+    monkeypatch.setattr(publish, "call", lambda *a, **k: {"data": [{"caption": "Hello world, this is the caption of the post  more"}]})
+    it = {"at": "2026-11-15T12:00:00+01:00", "type": "feed", "caption": cap}
+    assert publish.already_live(it, "ig") is True
+    monkeypatch.setattr(publish, "call", lambda *a, **k: {"data": [{"caption": "something else"}]})
+    assert publish.already_live(it, "ig") is False

@@ -109,6 +109,35 @@ def publish_fb(item):
     return vid
 
 
+def _snip(text):
+    return " ".join((text or "").split())[:60]
+
+
+def already_live(item, plat):
+    """True when this item is already on the platform: guards against publishing twice when
+    two runners (the server, a manual run) don't share state. Captioned items match on the
+    first 60 characters of the caption; stories match on any story posted since the item
+    was due."""
+    at = datetime.fromisoformat(item["at"])
+    if plat == "ig":
+        ig, tok = os.environ["IG_USER_ID"], os.environ["IG_TOKEN"]
+        if item["type"] == "story":
+            rows = call(f"{GRAPH}/{ig}/stories", {"fields": "timestamp", "access_token": tok}, "GET").get("data", [])
+            return any(datetime.strptime(r["timestamp"], "%Y-%m-%dT%H:%M:%S%z") >= at - timedelta(minutes=5) for r in rows)
+        rows = call(f"{GRAPH}/{ig}/media", {"fields": "caption", "limit": 25, "access_token": tok}, "GET").get("data", [])
+        return any(_snip(r.get("caption")) == _snip(item["caption"]) for r in rows)
+    page, tok = os.environ["FB_PAGE_ID"], os.environ["FB_PAGE_TOKEN"]
+    if item["type"] == "story":
+        rows = call(f"{GRAPH}/{page}/stories", {"access_token": tok}, "GET").get("data", [])
+        return any(int(r.get("creation_time", 0)) >= (at - timedelta(minutes=5)).timestamp() for r in rows)
+    if item["type"] in ("reel", "video"):
+        rows = call(f"{GRAPH}/{page}/videos", {"fields": "description", "limit": 25, "access_token": tok}, "GET").get("data", [])
+        if any(_snip(r.get("description")) == _snip(item["caption"]) for r in rows):
+            return True
+    rows = call(f"{GRAPH}/{page}/posts", {"fields": "message", "limit": 25, "access_token": tok}, "GET").get("data", [])
+    return any(_snip(r.get("message")) == _snip(item["caption"]) for r in rows)
+
+
 PLATFORMS = {"ig": (publish_ig, ("IG_USER_ID", "IG_TOKEN"), "Instagram"),
              "fb": (publish_fb, ("FB_PAGE_ID", "FB_PAGE_TOKEN"), "Facebook")}
 
@@ -173,6 +202,14 @@ def main():
                 log("WARN", f"skipped {key}: more than 12h late")
                 continue
             fn, _, label = PLATFORMS[plat]
+            try:
+                if already_live(it, plat):
+                    state["done"][key] = {"post_id": "already-live", "at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+                    log("INFO", f"{key} is already on {label}; not publishing it again")
+                    STATE.write_text(json.dumps(state, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+                    continue
+            except Exception as ex:
+                log("WARN", f"duplicate check failed for {key}: {ex}")
             try:
                 pid = with_retries(fn, it, label)
                 state["done"][key] = {"post_id": str(pid), "at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
